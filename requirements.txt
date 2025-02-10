@@ -1,0 +1,6 @@
+pymongo[srv]
+python-dotenv
+pydantic
+pydantic-core
+streamlit
+einops

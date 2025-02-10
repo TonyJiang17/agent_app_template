@@ -12,6 +12,7 @@ from schema import ChatMessage
 
 
 def convert_message_content_to_string(content: str | list[str | dict]) -> str:
+    """This function is designed to normalize message content into a single string, handling different content formats that might be returned by language models or chat APIs."""
     if isinstance(content, str):
         return content
     text: list[str] = []

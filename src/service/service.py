@@ -86,8 +86,30 @@ def _parse_input(user_input: UserInput) -> tuple[dict[str, Any], UUID]:
 
     configurable = {"thread_id": thread_id, "model": user_input.model}
 
+    #This prevents users from accidentally overriding critical configuration keys
+    """
+    # Predefined configurable
+    configurable = {
+        "thread_id": "some-id", 
+        "model": "gpt-4"
+    }
+
+    # User-provided agent_config
+    user_config = {
+        "temperature": 0.7,
+        "max_tokens": 100
+    }
+
+    # After update, configurable becomes:
+    {
+        "thread_id": "some-id", 
+        "model": "gpt-4",
+        "temperature": 0.7,
+        "max_tokens": 100
+    }
+    """
     if user_input.agent_config:
-        if overlap := configurable.keys() & user_input.agent_config.keys():
+        if overlap := configurable.keys() & user_input.agent_config.keys(): #find overlaping keys
             raise HTTPException(
                 status_code=422, detail=f"agent_config contains reserved keys: {overlap}"
             )
