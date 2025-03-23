@@ -22,7 +22,7 @@ from chat import init_chat, show_chat
 # - handle_feedback() - Draws a feedback widget and records feedback from the user.
 
 # The app heavily uses AgentClient to interact with the agent's FastAPI endpoints.
-
+#test 
 
 APP_TITLE = "Agent Service Toolkit"
 APP_ICON = "🧰"
